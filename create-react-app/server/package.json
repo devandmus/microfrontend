@@ -1,0 +1,24 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build:container": "npm run --prefix ../container build && rm -rf container && mkdir container && cp ../container/dist/* ./container",
+    "build:mf1": "npm run --prefix ../mf1 build && rm -rf mf1 && mkdir mf1 && cp ../mf1/dist/* ./mf1",
+    "build": "npm run build:container && npm run build:mf1",
+    "install:container": "npm --prefix ../container install",
+    "install:mf1": "npm --prefix ../mf1 install",
+    "install:all": "npm run install:container && npm run install:mf1 && npm install",
+    "start": "node server.container.js & node server.mf1.js",
+    "dev:container": "npm --prefix ../container start",
+    "dev:mf1": "npm --prefix ../mf1 start",
+    "dev": "npm run dev:container & npm run dev:mf1",
+    "clean": "rm -rf ../container/node_modules & rm -rf ../container/package-lock.json & rm -rf ../container/dist & rm -rf ../mf1/node_modules & rm -rf ../mf1/dist & rm -rf ../mf1/package-lock.json & rm -rf ./node_modules & rm -rf ./package-lock.json & rm -rf ./mf1/* & rm -rf ./container/*"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.2"
+  }
+}
